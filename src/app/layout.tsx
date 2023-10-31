@@ -1,4 +1,9 @@
-import './globals.css'
+'use client';
+import { Inter } from 'next/font/google'
+import { useState, useEffect } from "react";
+import { Router } from "next/router"
+import Layout from '@/components/pages/layout';
+import '../components/assets/styles/main.scss'
 
 export default function RootLayout({
   children,
@@ -6,13 +11,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
-    </html>
+    <Layout></Layout>
+    // <html lang="en">
+    //   {/*
+    //     <head /> will contain the components returned by the nearest parent
+    //     head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
+    //   */}
+    //   <head />
+    //   <body>{children}</body>
+    // </html>
   )
 }
