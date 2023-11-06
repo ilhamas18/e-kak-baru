@@ -7,6 +7,8 @@ const config = {
   key: "rootx",
   storage,
   whitelist: [
+    "profile",
+    "filter"
   ]
 }
 

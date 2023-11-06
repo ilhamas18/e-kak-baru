@@ -7,6 +7,9 @@ import { RxDashboard } from "react-icons/rx";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiOutlineDatabase } from "react-icons/ai";
 import { GiPapers } from "react-icons/gi";
+import { GiSevenPointedStar } from "react-icons/gi";
+import { HiDocumentReport } from "react-icons/hi";
+import { HiBuildingOffice } from 'react-icons/hi2'
 import { shallowEqual, useSelector } from "react-redux";
 import { State } from "@/store/reducer";
 
@@ -63,7 +66,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
       document.querySelector("body")?.classList.remove("sidebar-expanded");
     }
   }, [sidebarExpanded]);
-
 
   return (
     <aside
@@ -124,7 +126,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               <div>
                 <SidebarLinkGroup
                   activeCondition={
-                    pathname.includes("master")
+                    pathname?.includes("master")
                   }
                 >
                   {(handleClick, open) => {
@@ -133,7 +135,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         <Link
                           href="#"
                           className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4
-                          ${pathname.includes("master") || pathname === "/auth/registrasi" && "bg-graydark dark:bg-meta-4"}`
+                          ${pathname?.includes("master") || pathname === "/auth/registrasi" && "bg-graydark dark:bg-meta-4"}`
                           }
                           onClick={(e) => {
                             e.preventDefault();
@@ -149,26 +151,196 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         <div className={`translate transform overflow-hidden ${!open && "hidden"}`}>
                           <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
                             <li>
+                              <SidebarLinkGroup
+                                activeCondition={
+                                  pathname?.includes("master-usulan")
+                                }
+                              >
+                                {(handleClick, open) => {
+                                  return (
+                                    <>
+                                      <Link
+                                        href="#"
+                                        className={`group relative flex items-center gap-2.5 rounded-sm py-1 px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4
+                                          ${pathname?.includes("/master/master-usulan") && 'text-white'}`
+                                        }
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          sidebarExpanded
+                                            ? handleClick()
+                                            : setSidebarExpanded(true)
+                                        }}
+                                      >
+                                        Master Usulan
+                                        <IoIosArrowDown size={20} className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && "rotate-180"}`} />
+                                      </Link>
+                                      <div className={`translate transform overflow-hidden ${!open && "hidden"}`}>
+                                        <ul className="mt-2 mb-5.5 flex flex-col gap-2.5 pl-6">
+                                          <li>
+                                            <Link
+                                              href="/master/master-usulan/musrenbang"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/master-usulan/musrenbang" && 'text-white bg-graydark py-1'}`}
+                                            >Musrenbang</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/master-usulan/pokpirs"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/master-usulan/pokpirs" && 'text-white bg-graydark py-1'}`}
+                                            >Pokok Pikiran</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/master-usulan/mandatori"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/master-usulan/mandatori" && 'text-white bg-graydark py-1'}`}
+                                            >Mandatori</Link>
+                                          </li>
+                                          {/* <li>
+                                            <Link
+                                              href="/master/master-usulan/mandatori/spbe"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/master-usulan/mandatori/spbe" && 'text-white bg-graydark py-1'}`}
+                                            >Mandatori SPBE</Link>
+                                          </li> */}
+                                          <li>
+                                            <Link
+                                              href="/master/master-usulan/inovasi"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/master-usulan/inovasi" && 'text-white bg-graydark py-1'}`}
+                                            >Inisiatif Kepala Daerah</Link>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </>
+                                  )
+                                }}
+                              </SidebarLinkGroup>
+                            </li>
+                            <li>
+                              <SidebarLinkGroup
+                                activeCondition={
+                                  pathname?.includes("anggaran")
+                                }
+                              >
+                                {(handleClick, open) => {
+                                  return (
+                                    <>
+                                      <Link
+                                        href="#"
+                                        className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-1 font-medium text-bodydark2 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4
+                                          ${pathname?.includes("/master/anggaran") && 'text-white'}`
+                                        }
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          sidebarExpanded
+                                            ? handleClick()
+                                            : setSidebarExpanded(true)
+                                        }}
+                                      >
+                                        Master Anggaran
+                                        <IoIosArrowDown size={20} className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && "rotate-180"}`} />
+                                      </Link>
+                                      <div className={`translate transform overflow-hidden ${!open && "hidden"}`}>
+                                        <ul className="mt-2 mb-5.5 flex flex-col gap-2.5 pl-6">
+                                          <li>
+                                            <Link
+                                              href="/master/anggaran/ssh"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/anggaran/ssh" && 'text-white bg-graydark py-1'}`}
+                                            >SSH</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/anggaran/sbu"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/anggaran/sbu" && 'text-white bg-graydark py-1'}`}
+                                            >SBU</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/anggaran/hspk"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/anggaran/hspk" && 'text-white bg-graydark py-1'}`}
+                                            >HSPK</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/anggaran/rekening"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/anggaran/rekening" && 'text-white bg-graydark py-1'}`}
+                                            >Kode Rekening</Link>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </>
+                                  )
+                                }}
+                              </SidebarLinkGroup>
+                            </li>
+                            <li>
                               <Link
-                                href="/master/data-opd"
+                                href="/master/user"
                                 className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
-                                  ${pathname.includes("/master/data-opd") && "text-white"}
-                                 `}
-                              >Data OPD</Link>
+                                  ${pathname === "/master/user" && "text-white bg-graydark py-1"}`}
+                              >Master User</Link>
                             </li>
                             <li>
                               <Link
-                                href="/master/data-user"
-                                className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
-                                  ${pathname.includes("/master/data-user") || pathname === "/auth/registrasi" ? "text-white" : ""}`}
-                              >Data User</Link>
+                                href="/master/user/khusus"
+                                className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                  ${pathname === "/master/user/khusus" && "text-white bg-graydark py-1"}`}
+                              >User Khusus</Link>
                             </li>
                             <li>
+                              <Link
+                                href="/master/opd"
+                                className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                  ${pathname === "/master/opd" && "text-white bg-graydark py-1"}`}
+                              >Master OPD</Link>
+                            </li>
+                            {/* <li>
                               <Link
                                 href="/master/tematik"
                                 className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                                   ${pathname === "/master/tematik" && "text-white"}`}
+                              >Master Bidang</Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/master/rencana-kinerja"
+                                className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                  ${pathname === "/master/rencana-kinerja" && "text-white bg-graydark py-1"}`}
+                              >Master Rencana Kinerja</Link>
+                            </li> */}
+                            <li>
+                              <Link
+                                href="/master/tematik"
+                                className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                  ${pathname === "/master/tematik" && "text-white bg-graydark py-1"}`}
                               >Tematik</Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/master/periode"
+                                className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                  ${pathname === "/master/periode" && "text-white bg-graydark py-1"}`}
+                              >Periode</Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/master/tahun"
+                                className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                  ${pathname === "/master/tahun" && "text-white bg-graydark py-1"}`}
+                              >Tahun</Link>
+                            </li>
+                            <li>
+                              <Link
+                                href="/master/kelompok-anggaran"
+                                className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                  ${pathname === "/master/kelompok-anggaran" && "text-white bg-graydark py-1"}`}
+                              >Kelompok Anggaran</Link>
                             </li>
                           </ul>
                         </div>
@@ -181,7 +353,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               {/* {profile.role == 3 || profile.role == 4 && ( */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname.includes("notulen")
+                  pathname?.includes("rencana-kota")
                 }
               >
                 {(handleClick, open) => {
@@ -190,7 +362,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <Link
                         href="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4
-                          ${pathname.includes("laporan") && "bg-graydark dark:bg-meta-4"}`}
+                          ${pathname?.includes("rencana-kota") && "bg-graydark dark:bg-meta-4"}`}
                         onClick={(e) => {
                           e.preventDefault();
                           sidebarExpanded
@@ -206,34 +378,65 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
                           <li>
                             <Link
-                              href="/notulen/laporan"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
+                              href="/rencana-kota/tujuan-kota"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-kota/tujuan-kota' && 'text-white bg-graydark py-1'}`}
                             >
-                              List Notulen
+                              Tujuan Kota
                             </Link>
                           </li>
                           <li>
                             <Link
-                              href="/notulen/verifikasi"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${pathname === "/notulen/verifikasi" && "text-white"}`}
+                              href="/rencana-kota/isu-strategis"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-kota/isu-strategis' && 'text-white bg-graydark py-1'}`}
                             >
-                              Verifikasi
+                              Isu Strategis
                             </Link>
                           </li>
                           <li>
                             <Link
-                              href="/notulen/arsip"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${pathname === "/notulen/arsip" && "text-white"}`}
+                              href="/rencana-kota/strategi"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-kota/strategi' && 'text-white bg-graydark py-1'}`}
                             >
-                              Permintaan Hapus
+                              Strategi Kota
                             </Link>
                           </li>
                           <li>
                             <Link
-                              href="/notulen/form"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
+                              href="/rencana-kota/sasaran"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-kota/sasaran' && 'text-white bg-graydark py-1'}`}
                             >
-                              Input Notulen
+                              Sasaran Kota
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/rencana-kota/tematik"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-kota/tematik' && 'text-white bg-graydark py-1'}`}
+                            >
+                              Tematik Kota
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/rencana-kota/sub-tematik"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-kota/sub-tematik' && 'text-white bg-graydark py-1'}`}
+                            >
+                              Sub Tematik Kota
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/rencana-kota/pohon-kinerja"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-kota/pohon-kinerja' && 'text-white bg-graydark py-1'}`}
+                            >
+                              Pohon Kinerja Kota
                             </Link>
                           </li>
                         </ul>
@@ -245,7 +448,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
               <SidebarLinkGroup
                 activeCondition={
-                  pathname.includes("notulen")
+                  pathname?.includes("rencana-opd")
                 }
               >
                 {(handleClick, open) => {
@@ -254,7 +457,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                       <Link
                         href="#"
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4
-                          ${pathname.includes("laporan") && "bg-graydark dark:bg-meta-4"}`}
+                          ${pathname?.includes("rencana-opd") && "bg-graydark dark:bg-meta-4"}`}
                         onClick={(e) => {
                           e.preventDefault();
                           sidebarExpanded
@@ -262,7 +465,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             : setSidebarExpanded(true);
                         }}
                       >
-                        <GiPapers size={20} />
+                        <HiBuildingOffice size={20} />
                         <div className="text-title-">Perencanaan OPD</div>
                         <IoIosArrowDown size={20} className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && "rotate-180"}`} />
                       </Link>
@@ -273,23 +476,76 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               href="/notulen/laporan"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
                             >
-                              List Notulen
+                              Master Usulan
                             </Link>
                           </li>
                           <li>
                             <Link
-                              href="/notulen/verifikasi"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${pathname === "/notulen/verifikasi" && "text-white"}`}
+                              href="/rencana-opd/tujuan-opd"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white 
+                              ${pathname === '/rencana-opd/tujuan-opd' && 'text-white bg-graydark py-1'}`}
                             >
-                              Verifikasi
+                              Tujuan OPD
                             </Link>
                           </li>
                           <li>
                             <Link
-                              href="/notulen/arsip"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${pathname === "/notulen/arsip" && "text-white"}`}
+                              href="/rencana-opd/isu-strategis&permasalahan"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white 
+                              ${pathname === '/rencana-opd/isu-strategis&permasalahan' && 'text-white bg-graydark py-1'}`}
                             >
-                              Permintaan Hapus
+                              Isu Strategis & Permasalahan
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/rencana-opd/isu-strategis&arah-kebijakan"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white 
+                              ${pathname === '/rencana-opd/isu-strategis&arah-kebijakan' && 'text-white bg-graydark py-1'}`}
+                            >
+                              Strategi & Arah Kebijakan
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="#"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
+                            >
+                              Pohon Kinerja Kota
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="#"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
+                            >
+                              Pohon Kinerja OPD
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="#"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
+                            >
+                              Rencana Kinerja OPD
+                            </Link>
+                          </li>
+                          {/* <li>
+                            <Link
+                              href="/rencana-opd/info-opd"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-opd/info-opd' && 'text-white bg-graydark py-1'}`}
+                            >
+                              Info OPD
+                            </Link>
+                          </li> */}
+                          <li>
+                            <Link
+                              href="/rencana-opd/program-kegiatan"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-opd/program-kegiatann' && 'text-white bg-graydark py-1'}`}
+                            >
+                              Program / Kegiatan
                             </Link>
                           </li>
                           <li>
@@ -297,7 +553,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               href="/notulen/form"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
                             >
-                              Input Notulen
+                              Daftar ASN
                             </Link>
                           </li>
                         </ul>
@@ -306,7 +562,162 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   )
                 }}
               </SidebarLinkGroup>
-              {/* )} */}
+
+              <SidebarLinkGroup
+                activeCondition={
+                  pathname?.includes("laporan")
+                }
+              >
+                {(handleClick, open) => {
+                  return (
+                    <React.Fragment>
+                      <Link
+                        href="#"
+                        className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4
+                          ${pathname?.includes("laporan") && "bg-graydark dark:bg-meta-4"}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          sidebarExpanded
+                            ? handleClick()
+                            : setSidebarExpanded(true);
+                        }}
+                      >
+                        <HiDocumentReport size={20} />
+                        <div className="text-title-">Laporan</div>
+                        <IoIosArrowDown size={20} className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && "rotate-180"}`} />
+                      </Link>
+                      <div className={`translate transform overflow-hidden ${!open && "hidden"}`}>
+                        <ul className="mt-4 mb-5.5 flex flex-col gap-2.5 pl-6">
+                          <li>
+                            <Link
+                              href="/laporan/kak"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === "/laporan/kak" && 'text-white bg-graydark py-1'}`}
+                            >
+                              Rencana Kinerja (KAK)
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/laporan/rka"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === "/laporan/rka" && 'text-white bg-graydark py-1'}`}
+                            >
+                              Rincian Belanja
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/laporan/renstra"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === "/laporan/renstra" && 'text-white bg-graydark py-1'}`}
+                            >
+                              Renstra
+                            </Link>
+                          </li>
+                          <li>
+                            <SidebarLinkGroup
+                              activeCondition={
+                                pathname?.includes("/laporan/renja")
+                              }
+                            >
+                              {(handleClick, open) => {
+                                return (
+                                  <>
+                                    <Link
+                                      href="#"
+                                      className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-1 font-medium text-bodydark2 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4
+                                          ${pathname?.includes("/laporan/renja") && 'text-white'}`
+                                      }
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        sidebarExpanded
+                                          ? handleClick()
+                                          : setSidebarExpanded(true)
+                                      }}
+                                    >
+                                      Renja
+                                      <IoIosArrowDown size={20} className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && "rotate-180"}`} />
+                                    </Link>
+                                    <div className={`translate transform overflow-hidden ${!open && "hidden"}`}>
+                                      <ul className="mt-2 mb-5.5 flex flex-col gap-2.5 pl-6">
+                                        <li>
+                                          <Link
+                                            href="/laporan/renja/ranwal"
+                                            className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/laporan/renja/ranwal" && 'text-white bg-graydark py-1'}`}
+                                          >Ranwal</Link>
+                                        </li>
+                                        <li>
+                                          <Link
+                                            href="/laporan/renja/rankir1"
+                                            className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/laporan/renja/rankir1" && 'text-white bg-graydark py-1'}`}
+                                          >Rankir-1</Link>
+                                        </li>
+                                        <li>
+                                          <Link
+                                            href="/laporan/renja/rankir2"
+                                            className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/laporan/renja/rankir2" && 'text-white bg-graydark py-1'}`}
+                                          >Rankir-2</Link>
+                                        </li>
+                                        <li>
+                                          <Link
+                                            href="/laporan/renja/penetapan"
+                                            className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/laporan/renja/penetapan" && 'text-white bg-graydark py-1'}`}
+                                          >Penetapan</Link>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </>
+                                )
+                              }}
+                            </SidebarLinkGroup>
+                          </li>
+                          <li>
+                            <Link
+                              href="/laporan/renja/perubahan"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === "/laporan/renja/perubahan" && 'text-white bg-graydark py-1'}`}
+                            >
+                              Renja Perubahan
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/laporan/rekap-rencana-kinerja"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === "/laporan/rekap-rencana-kinerja" && 'text-white bg-graydark py-1'}`}
+                            >
+                              Rekap Rencana Kinerja
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/laporan/rekap-strategi"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === "/laporan/rekap-strategi" && 'text-white bg-graydark py-1'}`}
+                            >
+                              Rekap Strategi
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/laporan/rekap-cascading"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === "/laporan/rekap-cascading" && 'text-white bg-graydark py-1'}`}
+                            >
+                              Rekap Cascading
+                            </Link>
+                          </li>
+                        </ul>
+                      </div>
+                    </React.Fragment>
+                  )
+                }}
+              </SidebarLinkGroup>
             </ul>
           </div>
         </nav>

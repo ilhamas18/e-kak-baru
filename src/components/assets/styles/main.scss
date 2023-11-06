@@ -34,3 +34,10 @@
     @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
   }
 }
+
+@import url("../../common/button/_button.scss");
+@import url("../../common/common-modal/_modal.scss");
+@import url("../../common/switch-button/_switch-button.scss");
+@import url("../../common/text-input/_input.scss");
+
+@import url("../../pages/rencana-kota/pohon-kinerja/_tree.scss");

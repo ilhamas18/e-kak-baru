@@ -1,11 +1,15 @@
-import Image from 'next/image'
+'use client';
+import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { Inter } from '@next/font/google'
-import styles from './page.module.css'
+import withAuth from '@/components/utils/withAuth'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+function Home() {
   return (
     <div></div>
   )
 }
+
+export default withAuth(Home);
