@@ -22,7 +22,7 @@ export default function Loading({ loading, setLoading }: type) {
       >
         <div className="mt-[15rem] p-4 flex justify-center">
           <Image
-            src="/loading.gif"
+            src="/loading.svg"
             width={30}
             height={30}
             alt="Loading"

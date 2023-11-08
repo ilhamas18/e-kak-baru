@@ -371,7 +371,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         }}
                       >
                         <GiPapers size={20} />
-                        <div className="text-title-">Perencanaan Kota</div>
+                        <div className="text-title-">Perencanaan Kota / Kabupaten</div>
                         <IoIosArrowDown size={20} className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && "rotate-180"}`} />
                       </Link>
                       <div className={`translate transform overflow-hidden ${!open && "hidden"}`}>
@@ -382,7 +382,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-kota/tujuan-kota' && 'text-white bg-graydark py-1'}`}
                             >
-                              Tujuan Kota
+                              Tujuan
                             </Link>
                           </li>
                           <li>
@@ -400,7 +400,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-kota/strategi' && 'text-white bg-graydark py-1'}`}
                             >
-                              Strategi Kota
+                              Strategi
                             </Link>
                           </li>
                           <li>
@@ -409,7 +409,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-kota/sasaran' && 'text-white bg-graydark py-1'}`}
                             >
-                              Sasaran Kota
+                              Sasaran
                             </Link>
                           </li>
                           <li>
@@ -418,7 +418,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-kota/tematik' && 'text-white bg-graydark py-1'}`}
                             >
-                              Tematik Kota
+                              Tematik
                             </Link>
                           </li>
                           <li>
@@ -427,7 +427,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-kota/sub-tematik' && 'text-white bg-graydark py-1'}`}
                             >
-                              Sub Tematik Kota
+                              Sub Tematik
                             </Link>
                           </li>
                           <li>
@@ -436,7 +436,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-kota/pohon-kinerja' && 'text-white bg-graydark py-1'}`}
                             >
-                              Pohon Kinerja Kota
+                              Pohon Kinerja
                             </Link>
                           </li>
                         </ul>
@@ -516,8 +516,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           </li>
                           <li>
                             <Link
-                              href="#"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
+                              href="/rencana-opd/pokin-opd"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                              ${pathname === '/rencana-opd/pokin-opd' && 'text-white bg-graydark py-1'}`}
                             >
                               Pohon Kinerja OPD
                             </Link>

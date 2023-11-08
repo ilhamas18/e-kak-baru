@@ -40,7 +40,7 @@ const DataPohonKinerjaKota = ({ data }: PropTypes) => {
     <div className='dark:bg-meta-4 dark:text-white'>
       <div className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% ..."></div>
 
-      <div className="tree-container bg-white min-w-screen w-[100em] overflow-x-auto">
+      <div className="tree bg-white min-w-screen w-[100em] overflow-x-auto">
         <ul>
           <li>
             <div className='bg-white flex flex-col gap-4 border border-black'>
