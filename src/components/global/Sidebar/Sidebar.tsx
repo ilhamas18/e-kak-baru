@@ -405,6 +405,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           </li>
                           <li>
                             <Link
+                              href="/rencana-kota/isu-strategis&arah-kebijakan"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white 
+                              ${pathname === '/rencana-kota/isu-strategis&arah-kebijakan' && 'text-white bg-graydark py-1'}`}
+                            >
+                              Strategi & Arah Kebijakan
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
                               href="/rencana-kota/sasaran"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-kota/sasaran' && 'text-white bg-graydark py-1'}`}

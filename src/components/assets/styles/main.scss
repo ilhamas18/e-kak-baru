@@ -6,6 +6,13 @@
 
 @import "./satoshi.scss";
 
+// VARIABLES
+@import "../variables/color";
+@import "../variables/transitions";
+
+// BASE
+@import "../base/animation";
+
 @layer base {
   body {
     @apply font-satoshi font-normal text-base text-body bg-whiten relative z-1;

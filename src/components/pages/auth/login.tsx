@@ -51,7 +51,6 @@ const FormField = (props: OtherProps & FormikProps<FormValues>) => {
     width: '100%',
     background: 'linear-gradient(to right, #00bcd4, #2196f3)',
   };
-  console.log(values, '>>');
 
   return (
     <div
@@ -211,7 +210,6 @@ const LoginForm: any = () => {
       type: "withoutAuth",
       body: payload
     })
-    console.log(response, '>>>>');
 
     if (!response.success) {
 

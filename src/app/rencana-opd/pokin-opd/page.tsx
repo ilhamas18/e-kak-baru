@@ -74,7 +74,8 @@ const PokinOPD = () => {
       ) : dataPokinOPD.length !== 0 && (
         <>
           <div className="bg-white dark:bg-meta-4 dark:text-white shadow-card flex flex-col gap-2 py-6 text-center font-bold text-title-sm rounded rounded-lg border-none">
-            <div>Pohon Kinerja OPD</div>
+            <div>Pohon Kinerja OPD {storeKodeOPD.label}</div>
+            <div>Tahun {storeYear.label}</div>
           </div>
           <div className='body relative'>
             <div className='flex justify-between items-center mt-10'>
@@ -94,7 +95,7 @@ const PokinOPD = () => {
             <div style={gradientStyle}>
               <div className='px-4 flex text-white py-4 space-x-6 font-bold items-center'>
                 <PiTreeStructure size={20} />
-                <div className='text-title-xsm'>Pohon Kinerja OPD</div>
+                <div className='text-title-xsm'>Pohon Kinerja OPD </div>
               </div>
             </div>
             <DataPokinOPD data={dataPokinOPD} />
