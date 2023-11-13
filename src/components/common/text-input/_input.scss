@@ -85,7 +85,7 @@
   &__label {
     position: absolute;
     left: 1rem;
-    top: 0.6rem;
+    top: 0.9rem;
     padding: 0 0.5rem;
     font-size: normal;
     font-weight: 100;
@@ -117,7 +117,7 @@
 
 .form__input:focus~.form__label,
 .form__input:not(:placeholder-shown).form__input:not(:focus)~.form__label {
-  top: -0.7rem;
+  top: -0.5rem;
   font-size: 0.8rem;
   left: 0.8rem;
   color: #002DBB;

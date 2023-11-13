@@ -197,19 +197,33 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                               ${pathname === "/master/master-usulan/mandatori" && 'text-white bg-graydark py-1'}`}
                                             >Mandatori</Link>
                                           </li>
-                                          {/* <li>
+                                          <li>
                                             <Link
                                               href="/master/master-usulan/mandatori/spbe"
                                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                                               ${pathname === "/master/master-usulan/mandatori/spbe" && 'text-white bg-graydark py-1'}`}
-                                            >Mandatori SPBE</Link>
-                                          </li> */}
+                                            >Peta Rencana SPBE</Link>
+                                          </li>
                                           <li>
                                             <Link
                                               href="/master/master-usulan/inovasi"
                                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                                               ${pathname === "/master/master-usulan/inovasi" && 'text-white bg-graydark py-1'}`}
                                             >Inisiatif Kepala Daerah</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/master-usulan/lppd"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/master-usulan/inovasi" && 'text-white bg-graydark py-1'}`}
+                                            >LPPD</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/master-usulan/spm"
+                                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                              ${pathname === "/master/master-usulan/inovasi" && 'text-white bg-graydark py-1'}`}
+                                            >SPM</Link>
                                           </li>
                                         </ul>
                                       </div>

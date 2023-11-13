@@ -108,8 +108,8 @@ const StrategicProps = ({ data, strategic, key }: PropTypes) => {
             </button>
           </div>
         </div>
-        <div className={`${openEdit ? 'show' : 'hidden'}`}>
-          <EditPohonForm type="strategic" data={strategic} />
+        <div className={`${openEdit ? 'show duration-500' : 'hidden'} duration-500`}>
+          <EditPohonForm type="strategic" data={strategic} setOpenEdit={setOpenEdit} />
         </div>
       </div>
       {showTactical && (
