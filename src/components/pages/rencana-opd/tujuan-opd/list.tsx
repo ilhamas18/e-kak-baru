@@ -12,6 +12,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import { AiFillEdit, AiFillDelete } from 'react-icons/ai';
 
 interface PropTypes {
   data: any;
@@ -40,79 +41,85 @@ const DataTujuanOPD = ({ data }: PropTypes) => {
       <div className="bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% ..."></div>
 
       <Paper>
-        <TableContainer sx={{ maxHeight: 440, overflow: 'auto' }}>
+        <TableContainer sx={{ maxHeight: 600, overflow: 'auto' }}>
           <Table stickyHeader aria-label="sticky table">
-            {/* <TableHead>
-              <TableCell align="center" colSpan={3} style={{ minWidth: 80 }}>NO</TableCell>
-              <TableCell align="center" colSpan={3} style={{ minWidth: 100 }}>AKSI</TableCell>
-              <TableCell align="center" colSpan={3} style={{ minWidth: 220 }}>Tujuan OPD</TableCell>
-              <TableCell align="center" colSpan={3} style={{ minWidth: 220 }}>Urusan / Bidang Urusan</TableCell>
-              <TableCell align="center" colSpan={3} style={{ minWidth: 220 }}>INDIKATOR</TableCell>
-              <TableCell align="center" colSpan={3} style={{ minWidth: 220 }}>RUMUS PERHITUNGAN</TableCell>
-              <TableCell align="center" colSpan={3} style={{ minWidth: 220 }}>SUMBER DATA</TableCell>
-            </TableHead> */}
-            <thead className="thead-tujuan overflow-x-auto uppercase text-title-ss">
-              <tr className="header-tujuan">
-                <th className="border border-light-gray px-8" scope="col" rowSpan={2}>No.</th>
-                <th className="border border-light-gray px-8 text-center" scope="col" rowSpan={2}>Aksi</th>
-                <th className="border border-light-gray px-8" scope="col" rowSpan={2}>Tujuan OPD</th>
-                <th className="border border-light-gray px-8" scope="col" rowSpan={2}>Urusan / Bidang Urusan</th>
-                <th className="border border-light-gray px-8" scope="col" rowSpan={2}>Indikator</th>
-                <th className="border border-light-gray px-8" scope="col" rowSpan={2}>Rumus Perhitungan</th>
-                <th className="border border-light-gray px-8" scope="col" rowSpan={2}>Sumber Data</th>
-                <th className="border border-light-gray px-8 text-center" scope="col" colSpan={2}>2020</th>
-                <th className="border border-light-gray px-8 text-center" scope="col" colSpan={2}>2021</th>
-                <th className="border border-light-gray px-8 text-center" scope="col" colSpan={2}>2022</th>
-                <th className="border border-light-gray px-8 text-center" scope="col" colSpan={2}>2023</th>
-                <th className="border border-light-gray px-8 text-center" scope="col" colSpan={2}>2024</th>
-              </tr>
-              <tr>
-                <th className="border border-light-gray px-4 text-center" scope="col">Target</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Satuan</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Target</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Satuan</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Target</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Satuan</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Target</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Satuan</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Target</th>
-                <th className="border border-light-gray px-4 text-center" scope="col">Satuan</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-            {/* <TableBody>
+            <TableHead className='text-title-ss'>
+              <TableRow>
+                <TableCell style={{ borderBottom: "none" }}></TableCell>
+                <TableCell style={{ borderBottom: "none" }}></TableCell>
+                <TableCell style={{ borderBottom: "none" }}></TableCell>
+                <TableCell style={{ borderBottom: "none" }}></TableCell>
+                <TableCell style={{ borderBottom: "none" }}></TableCell>
+                <TableCell style={{ borderBottom: "none" }}></TableCell>
+                <TableCell style={{ borderBottom: "none" }}></TableCell>
+                <TableCell colSpan={2} align="center" style={{ border: '1px solid #68788A' }}>2020</TableCell>
+                <TableCell colSpan={2} align="center" style={{ border: '1px solid #68788A' }}>2021</TableCell>
+                <TableCell colSpan={2} align="center" style={{ border: '1px solid #68788A' }}>2022</TableCell>
+                <TableCell colSpan={2} align="center" style={{ border: '1px solid #68788A' }}>2023</TableCell>
+                <TableCell colSpan={2} align="center" style={{ border: '1px solid #68788A' }}>2024</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell align="center" style={{ minWidth: 80 }} rowSpan={2}>NO</TableCell>
+                <TableCell align="center" style={{ minWidth: 180 }} rowSpan={2}>AKSI</TableCell>
+                <TableCell align="center" style={{ minWidth: 220 }} rowSpan={2}>URUSAN / BIDANG URUSAN</TableCell>
+                <TableCell align="center" style={{ minWidth: 220 }} rowSpan={2}>TUJUAN OPD</TableCell>
+                <TableCell align="center" style={{ minWidth: 220 }} rowSpan={2}>INDIKATOR</TableCell>
+                <TableCell align="center" style={{ minWidth: 220 }} rowSpan={2}>RUMUS PERHITUNGAN</TableCell>
+                <TableCell align="center" style={{ minWidth: 220 }} rowSpan={2}>SUMBER DATA</TableCell>
+                <TableCell align="center" style={{ minWidth: 180, borderLeft: '1px solid #68788A' }}>TARGET</TableCell>
+                <TableCell align="center" style={{ minWidth: 180 }}>SATUAN</TableCell>
+                <TableCell align="center" style={{ minWidth: 180, borderLeft: '1px solid #68788A' }}>TARGET</TableCell>
+                <TableCell align="center" style={{ minWidth: 180 }}>SATUAN</TableCell>
+                <TableCell align="center" style={{ minWidth: 180, borderLeft: '1px solid #68788A' }}>TARGET</TableCell>
+                <TableCell align="center" style={{ minWidth: 180 }}>SATUAN</TableCell>
+                <TableCell align="center" style={{ minWidth: 180, borderLeft: '1px solid #68788A' }}>TARGET</TableCell>
+                <TableCell align="center" style={{ minWidth: 180 }}>SATUAN</TableCell>
+                <TableCell align="center" style={{ minWidth: 180, borderLeft: '1px solid #68788A' }}>TARGET</TableCell>
+                <TableCell align="center" style={{ minWidth: 180 }}>SATUAN</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {data
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row: any, index: number) => {
                   return (
                     <React.Fragment>
-                      <TableRow hover role="checkbox" tabIndex={-1} key={index}>
-                        <TableCell align='center' rowSpan={row.indikator.length + 1}>{index + 1}</TableCell>
-                        <TableCell align='center' rowSpan={row.indikator.length + 1}>
-                          <div classNameName='flex gap-3 items-center justify-center'>
-                            <button>
-                              <BiEdit size={20} />
+                      <TableRow hover role="checkbox" className='text-bold font-bold' tabIndex={-1} key={index}>
+                        <TableCell align='center' rowSpan={row.indikator_tujuan.length + 1}>{index + 1}</TableCell>
+                        <TableCell align='center' rowSpan={row.indikator_tujuan.length + 1}>
+                          <div className='flex flex-col gap-2'>
+                            <button className='bg-white border border-meta-6 hover:bg-meta-6 hover:text-white text-meta-4 p-2 flex items-center justify-center rounded-lg flex space-x-2 text-white text-center hover:shadow-xl duration-300'>
+                              <AiFillEdit size={18} />
+                              <span>Edit</span>
                             </button>
-                            <button>
-                              <BsFillTrashFill size={20} />
+                            <button className='bg-danger hover:shadow-lg text-white p-2 flex items-center justify-center rounded-lg flex space-x-2 text-white text-center hover:shadow-xl'>
+                              <AiFillDelete size={18} />
+                              <span>Hapus</span>
                             </button>
                           </div>
                         </TableCell>
-                        <TableCell align='center' rowSpan={row.indikator.length + 1}>{row.tujuan_kota}</TableCell>
-                        <TableCell align='center' rowSpan={row.indikator.length + 1}>{row.periode}</TableCell>
+                        <TableCell align='center' rowSpan={row.indikator_tujuan.length + 1}>-</TableCell>
+                        <TableCell align='center' rowSpan={row.indikator_tujuan.length + 1}>{row.tujuan !== '' ? row.tujuan : '-'}</TableCell>
                       </TableRow>
-                      {row.indikator.map((el: any, i: number) => (
-                        <TableRow hover role="checkbox" key={i}>
-                          <TableCell align='center'>{el.text}</TableCell>
-                          <TableCell align='center'>{el.target}</TableCell>
-                          <TableCell align='center'>{el.satuan}</TableCell>
-                          <TableCell align='center'>{el.tahun}</TableCell>
-                        </TableRow>
+                      {row.indikator_tujuan.map((row2: any, index2: number) => (
+                        <>
+                          <TableRow hover role="checkbox" key={index2}>
+                            <TableCell align='center'>{row2.indikator !== '' ? row2.indikator : '-'}</TableCell>
+                            <TableCell align='center'>{row2.rumus_perhitungan !== '' ? row2.rumus_perhitungan : '-'}</TableCell>
+                            <TableCell align='center'>{row2.sumber_data !== '' ? row2.sumber_data : '-'}</TableCell>
+                            {row2.target_tujuan.map((row3: any, index3: number) => (
+                              <>
+                                <TableCell align='center'>{row3.target !== '' ? row3.target : '-'}</TableCell>
+                                <TableCell align='center'>{row3.satuan !== '' ? row3.satuan : '-'}</TableCell>
+                              </>
+                            ))}
+                          </TableRow>
+                        </>
                       ))}
                     </React.Fragment>
-                  );
+                  )
                 })}
-            </TableBody> */}
+            </TableBody>
           </Table>
         </TableContainer>
         <TablePagination

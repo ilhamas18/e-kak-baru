@@ -161,9 +161,9 @@ const TextInput = ({
           maxLength={max}
           value={value ?? ""}
           className={`
-           form__input-text-area
-           ${errors && touched ? "error" : ""} 
-           ${center ? "center text-center tracking-widests font-Bold" : ""} `
+            form__input-text-area
+            ${errors && touched ? "error" : ""} 
+            ${center ? "center text-center tracking-widests font-Bold" : ""} `
           }
           onInvalid={(e: any) => {
             e.target.setCustomValidity("Hanya dapat memasukan huruf dan angka");

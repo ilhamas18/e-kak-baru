@@ -8,7 +8,8 @@ const config = {
   storage,
   whitelist: [
     "profile",
-    "filter"
+    "filter",
+    "payload"
   ]
 }
 

@@ -1,8 +1,12 @@
 import * as React from 'react';
+import { useRef } from 'react';
+import { Link } from 'react-scroll';
 import { FaRegClone } from 'react-icons/fa';
 import StrategicProps from './children/strategic';
 import usePreventBodyScroll from '@/components/hooks/usePreventBodyScroll';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { BiSolidAddToQueue } from 'react-icons/bi';
+import AddPohonForm from './add';
 import 'react-horizontal-scrolling-menu/dist/styles.css';
 type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 
@@ -26,7 +30,20 @@ interface PropTypes {
 }
 
 const DataPokinOPD = ({ data }: PropTypes) => {
-  const { disableScroll, enableScroll } = usePreventBodyScroll();
+  const ref = useRef<HTMLDivElement>(null);
+  const [showAll, setShowAll] = React.useState<boolean>(false);
+  const [addStrategic, setAddStrategic] = React.useState<boolean>(false);
+
+  const handleOpenAddForm = () => {
+    setAddStrategic(true);
+    setTimeout(() => {
+      document.getElementById("addForm")!.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }, 400);
+  }
 
   return (
     <div className='dark:bg-meta-4 dark:text-white bg-white'>
@@ -38,7 +55,7 @@ const DataPokinOPD = ({ data }: PropTypes) => {
         <div className='container-wrapp bg-white flex-col items-center justify-center relative'>
           <div data-te-infinite-scroll-init
             data-te-infinite-direction="x"
-            className="tree bg-white min-w-[1000em] items-center justify-center overflow-x-scroll"
+            className="tree bg-white w-max items-center justify-center overflow-x-scroll"
           >
             <ul>
               <li>
@@ -61,11 +78,38 @@ const DataPokinOPD = ({ data }: PropTypes) => {
                       </tr>
                     </tbody>
                   </table>
+                  <div className='flex justify-between mt-2 gap-3'>
+                    <button className='px-4 py-1 rounded rounded-md border border-black text-black w-full hover:bg-xl-base hover:text-white duration-500'>
+                      Show All
+                    </button>
+                    <button
+                      className='px-4 py-1 rounded rounded-md bg-xl-base text-white w-full hover:shadow-lg duration-500 flex gap-2 items-center justify-center'
+                      onClick={handleOpenAddForm}
+                    >
+                      <BiSolidAddToQueue size={18} />
+                      Strategi
+                    </button>
+                  </div>
                 </div>
                 <ul>
                   {data?.strategic?.map((el: any, index: number) => (
-                    <StrategicProps data={data} strategic={el} key={index} />
+                    <StrategicProps
+                      data={data}
+                      strategic={el}
+                      key={index}
+                      showAll={showAll}
+                    />
                   ))}
+                  {addStrategic && (
+                    <li>
+                      <div id={'addForm'} ref={ref}>
+                        <AddPohonForm
+                          type='strategic'
+                          setOpenAdd={setAddStrategic}
+                        />
+                      </div>
+                    </li>
+                  )}
                 </ul>
               </li>
             </ul>

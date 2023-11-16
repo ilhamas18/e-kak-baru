@@ -20,11 +20,6 @@ interface SidebarProps {
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
-
-  // const { profile } = useSelector((state: State) => ({
-  //   profile: state.profile.profile
-  // }), shallowEqual);
-
   const trigger = useRef<any>(null);
   const sidebar = useRef<any>(null);
 
@@ -33,7 +28,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
     storedSidebarExpanded === null ? false : storedSidebarExpanded === "true"
   );
 
-  // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: MouseEvent) => {
       if (!sidebar.current || !trigger.current) return;
@@ -180,14 +174,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                             <Link
                                               href="/master/master-usulan/musrenbang"
                                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
-                                              ${pathname === "/master/master-usulan/musrenbang" && 'text-white bg-graydark py-1'}`}
+                                              ${pathname?.includes('/master/master-usulan/musrenbang') && 'text-white bg-graydark py-1'}`}
                                             >Musrenbang</Link>
                                           </li>
                                           <li>
                                             <Link
                                               href="/master/master-usulan/pokpirs"
                                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
-                                              ${pathname === "/master/master-usulan/pokpirs" && 'text-white bg-graydark py-1'}`}
+                                              ${pathname?.includes('/master/master-usulan/pokpirs') && 'text-white bg-graydark py-1'}`}
                                             >Pokok Pikiran</Link>
                                           </li>
                                           <li>
@@ -294,11 +288,58 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               </SidebarLinkGroup>
                             </li>
                             <li>
-                              <Link
-                                href="/master/user"
-                                className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
-                                  ${pathname === "/master/user" && "text-white bg-graydark py-1"}`}
-                              >Master User</Link>
+                              <SidebarLinkGroup
+                                activeCondition={
+                                  pathname?.includes("pegawai")
+                                }
+                              >
+                                {(handleClick, open) => {
+                                  return (
+                                    <>
+                                      <Link
+                                        href="#"
+                                        className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-1 font-medium text-bodydark2 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4
+                                          ${pathname?.includes("/master/pegawai") && 'text-white'}`
+                                        }
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          sidebarExpanded
+                                            ? handleClick()
+                                            : setSidebarExpanded(true)
+                                        }}
+                                      >
+                                        Master Pegawai
+                                        <IoIosArrowDown size={20} className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${open && "rotate-180"}`} />
+                                      </Link>
+                                      <div className={`translate transform overflow-hidden ${!open && "hidden"}`}>
+                                        <ul className="mt-2 mb-5.5 flex flex-col gap-2.5 pl-6">
+                                          <li>
+                                            <Link
+                                              href="/master/pegawai/pns"
+                                              className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                                ${pathname === "/master/pegawai/pns" && "text-white bg-graydark py-1"}`}
+                                            >PNS</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/pegawai/pppk"
+                                              className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                                ${pathname === "/master/pegawai/pppk" && "text-white bg-graydark py-1"}`}
+                                            >P3K</Link>
+                                          </li>
+                                          <li>
+                                            <Link
+                                              href="/master/pegawai/non-asn"
+                                              className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
+                                                ${pathname === "/master/pegawai/non-asn" && "text-white bg-graydark py-1"}`}
+                                            >Non ASN</Link>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </>
+                                  )
+                                }}
+                              </SidebarLinkGroup>
                             </li>
                             <li>
                               <Link

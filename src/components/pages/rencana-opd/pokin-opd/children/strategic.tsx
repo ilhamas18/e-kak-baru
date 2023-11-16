@@ -1,24 +1,27 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TacticalProps from './tactical';
 import { TbBrandTorchain } from 'react-icons/tb';
 import { FaEdit } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 import EditPohonForm from '../edit';
+import { BiSolidAddToQueue } from 'react-icons/bi';
+import AddPohonForm from '../add';
 
 interface PropTypes {
   data: any;
   strategic: any;
-  key: number
+  key: number;
+  showAll: boolean;
 }
 
 const StrategicProps = ({ data, strategic, key }: PropTypes) => {
-  const buttonText = 'Detail'
+  const ref = useRef<HTMLDivElement>(null);
   const [filteredTactical, setFilteredTactical] = useState<any>([]);
-  // const []
   const [showDetail, setShowDetail] = useState<boolean>(false);
-  const [showTactical, setShowTactical] = useState<boolean>(false);
   const [openEdit, setOpenEdit] = useState<boolean>(false);
+  const [showTactical, setShowTactical] = useState<boolean>(false);
+  const [addTactical, setAddTactical] = useState<boolean>(false);
 
   useEffect(() => {
     const filteredTacticalItems = data.tactical.filter((el: any) => el.parent == strategic.id);
@@ -30,6 +33,16 @@ const StrategicProps = ({ data, strategic, key }: PropTypes) => {
     // const filtered = data.strategic.find((el: any) => el.id == id);
     // console.log(filtered, '<<<');
 
+  }
+  const handleOpenAddForm = (e: any) => {
+    setAddTactical(true);
+    setTimeout(() => {
+      document.getElementById("addForm")!.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+        inline: "nearest",
+      });
+    }, 600);
   }
 
   return (
@@ -90,7 +103,7 @@ const StrategicProps = ({ data, strategic, key }: PropTypes) => {
               <div>
                 <button
                   className='px-2 py-1 rounded rounded-md border border-[#f59e0b] text-[#f59e0b] duration-500 flex items-center justify-center hover:shadow-2xl gap-2'
-                  onClick={() => handleEditStrategic(strategic.id)}
+                  onClick={() => setOpenEdit(!openEdit)}
                 >
                   <FaEdit size={16} />
                   <span>Edit</span>
@@ -103,9 +116,24 @@ const StrategicProps = ({ data, strategic, key }: PropTypes) => {
                 </button>
               </div>
             </div>
-            <button className='px-4 py-1 rounded rounded-md border border-white text-white w-full hover:bg-xl-base duration-500' onClick={() => setShowTactical(!showTactical)}>
-              {!showTactical ? 'Tampilkan' : 'Sembunyikan'}
-            </button>
+            {!showTactical ? (
+              <button className='px-4 py-1 rounded rounded-md border border-white text-white w-full hover:bg-xl-base duration-500' onClick={() => setShowTactical(true)}>
+                Show
+              </button>
+            ) : (
+              <div className='flex gap-2'>
+                <button className='px-4 py-1 rounded rounded-md border border-white text-white w-full hover:bg-xl-base duration-500' onClick={() => setShowTactical(false)}>
+                  Hidden
+                </button>
+                <button
+                  className='px-4 py-1 rounded rounded-md bg-xl-base text-white w-full hover:shadow-lg duration-500 flex gap-2 items-center justify-center'
+                  onClick={() => handleOpenAddForm(ref)}
+                >
+                  <BiSolidAddToQueue size={18} />
+                  Tactical
+                </button>
+              </div>
+            )}
           </div>
         </div>
         <div className={`${openEdit ? 'show duration-500' : 'hidden'} duration-500`}>
@@ -117,6 +145,16 @@ const StrategicProps = ({ data, strategic, key }: PropTypes) => {
           {filteredTactical.map((el: any, index: number) => (
             <TacticalProps data={data} tactical={el} key={index} />
           ))}
+          {addTactical && (
+            <li>
+              <div id={'addForm'}>
+                <AddPohonForm
+                  type='Tactical'
+                  setOpenAdd={setAddTactical}
+                />
+              </div>
+            </li>
+          )}
         </ul>
       )}
     </li>

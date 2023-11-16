@@ -116,7 +116,7 @@ const DataLaporanRKA = ({ data }: PropTypes) => {
                                 </button>
                                 <button className='bg-white border border-xl-base hover:bg-xl-base hover:text-white text-xl-base p-2 flex items-center justify-center rounded-lg flex space-x-2 text-white text-center hover:shadow-xl'>
                                   <AiFillEdit size={18} />
-                                  <span>Cetak</span>
+                                  <span>Edit</span>
                                 </button>
                               </div>
                             </TableCell>

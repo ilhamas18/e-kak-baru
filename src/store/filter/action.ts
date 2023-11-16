@@ -7,8 +7,6 @@ const dataSlice = createSlice({
   reducers: {
     setStoreKodeOPD: (state, action: PayloadAction<any>) => {
       state.storeKodeOPD = action.payload;
-      console.log(action.payload, '>>s tore');
-
     },
     setStoreYear: (state, action: PayloadAction<any>) => {
       state.storeYear = action.payload;

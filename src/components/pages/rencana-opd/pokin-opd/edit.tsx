@@ -139,27 +139,37 @@ const EditPohonForm = ({ type, data, setOpenEdit }: PropTypes) => {
   const [indikatorArr, setIndikatorArr] = useState<any>([]);
   const [indikator, setIndikator] = useState<string>('');
   const [openAddIndikator, setOpenAddIndikator] = useState<boolean>(false);
-  console.log(indikatorArr, '>>>');
+
+  const { storeYear } = useSelector((state: State) => ({
+    storeYear: state.filter.storeYear
+  }), shallowEqual)
 
   useEffect(() => {
     setIndikatorArr(data.indikators);
   }, [])
 
-  const handleInputChange = (index: any, newValue: any) => {
-    console.log(newValue, 'value');
-
+  const handleInputChange = (index: any, newValue: any, type: string) => {
     const updatedIndicators = [...indikatorArr];
-    updatedIndicators[index].indikator = {
-      ...updatedIndicators[index].indikator,
-      indikator: newValue,
-    };
 
-    setIndikatorArr(updatedIndicators);
+    if (type === 'indikator') {
+      updatedIndicators[index].indikator = {
+        ...updatedIndicators[index].indikator,
+        indikator: newValue,
+      };
+      setIndikatorArr(updatedIndicators);
+    } else if (type === 'target') {
+      updatedIndicators[index].indikator = {
+        ...updatedIndicators[index].indikator,
+        indikator: newValue,
+      };
+    }
+
   };
 
-  const { storeYear } = useSelector((state: State) => ({
-    storeYear: state.filter.storeYear
-  }), shallowEqual)
+  const handleClose = () => {
+    // setIndikatorArr(data.indikators);
+    setOpenEdit(false);
+  }
 
   return (
     <div>
@@ -187,7 +197,7 @@ const EditPohonForm = ({ type, data, setOpenEdit }: PropTypes) => {
               disabled
             />
           </div>
-          {indikatorArr.length && data.indikators.map((el: any, i: number) => (
+          {indikatorArr.length != 0 && data.indikators.map((el: any, i: number) => (
             <>
               <div className="w-full">
                 <TextInput
@@ -198,12 +208,7 @@ const EditPohonForm = ({ type, data, setOpenEdit }: PropTypes) => {
                   // touched={el.indikator.indikator}
                   // errors={errors.indikator}
                   value={indikatorArr[i].indikator.indikator}
-                  change={(e: any) => handleInputChange(i, e.target.value)}
-                // change={(selectedOption: any) => {
-                //   handleChange({
-                //     target: { name: `indikator[${i}].indikator`, value: selectedOption },
-                //   });
-                // }}
+                  change={(e: any) => handleInputChange(i, e.target.value, 'indikator')}
                 />
               </div>
               <div className="w-full">
@@ -212,8 +217,8 @@ const EditPohonForm = ({ type, data, setOpenEdit }: PropTypes) => {
                   id='target'
                   name='target'
                   label="Target"
-                  max={18}
-                  value={el.indikator.target}
+                  value={indikatorArr[i].target}
+                  change={(e: any) => handleInputChange(i, e.target.value, 'target')}
                 />
               </div>
               <div className="w-full">
@@ -294,7 +299,7 @@ const EditPohonForm = ({ type, data, setOpenEdit }: PropTypes) => {
           className="button-container w-full"
           // loading={loading}
           rounded
-          onClick={() => setOpenEdit(false)}
+          onClick={handleClose}
         >
           <div className="flex justify-center items-center text-white font-Nunito">
             <span className="button-text">Batal</span>

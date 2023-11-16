@@ -22,6 +22,7 @@ const nextConfig = {
   },
   env: {
     BASE_URL: process.env.BASE_URL,
+    SITE_URL: process.env.SITE_URL
   },
   reactStrictMode: false,
   swcMinify: true,
