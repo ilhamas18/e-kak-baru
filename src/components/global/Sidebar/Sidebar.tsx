@@ -191,13 +191,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                               ${pathname === "/master/master-usulan/mandatori" && 'text-white bg-graydark py-1'}`}
                                             >Mandatori</Link>
                                           </li>
-                                          <li>
+                                          {/* <li>
                                             <Link
                                               href="/master/master-usulan/mandatori/spbe"
                                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                                               ${pathname === "/master/master-usulan/mandatori/spbe" && 'text-white bg-graydark py-1'}`}
                                             >Peta Rencana SPBE</Link>
-                                          </li>
+                                          </li> */}
                                           <li>
                                             <Link
                                               href="/master/master-usulan/inovasi"
@@ -353,7 +353,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                 href="/master/opd"
                                 className={`first-letter:group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                                   ${pathname === "/master/opd" && "text-white bg-graydark py-1"}`}
-                              >Master OPD</Link>
+                              >Master OPD / Urusan</Link>
                             </li>
                             {/* <li>
                               <Link
@@ -563,28 +563,20 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           </li>
                           <li>
                             <Link
-                              href="/rencana-opd/isu-strategis&arah-kebijakan"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white 
-                              ${pathname === '/rencana-opd/isu-strategis&arah-kebijakan' && 'text-white bg-graydark py-1'}`}
-                            >
-                              Strategi & Arah Kebijakan
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="#"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
-                            >
-                              Pohon Kinerja Kota
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
                               href="/rencana-opd/pokin-opd"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-opd/pokin-opd' && 'text-white bg-graydark py-1'}`}
                             >
                               Pohon Kinerja OPD
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="/rencana-opd/isu-strategis&arah-kebijakan"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white 
+                              ${pathname === '/rencana-opd/isu-strategis&arah-kebijakan' && 'text-white bg-graydark py-1'}`}
+                            >
+                              Strategi & Arah Kebijakan
                             </Link>
                           </li>
                           <li>
@@ -619,6 +611,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
                             >
                               Daftar ASN
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              href="#"
+                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
+                            >
+                              Pohon Kinerja Kota
                             </Link>
                           </li>
                         </ul>
