@@ -15,7 +15,6 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import { State } from "@/store/reducer";
 import Typography from '@mui/material/Typography';
-import { Box } from "@mui/material";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -533,15 +532,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           </li>
                           <li>
                             <Link
-                              href="/rencana-kota/sub-tematik"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
-                              ${pathname === '/rencana-kota/sub-tematik' && 'text-white bg-graydark py-1'}`}
-                            >
-                              Sub Tematik
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
                               href="/rencana-kota/pohon-kinerja"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
                               ${pathname === '/rencana-kota/pohon-kinerja' && 'text-white bg-graydark py-1'}`}
@@ -593,7 +583,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             <Link
                               href="/rencana-opd/tujuan-opd"
                               className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white 
-                              ${pathname === '/rencana-opd/tujuan-opd' && 'text-white bg-graydark py-1'}`}
+                              ${pathname?.includes('/rencana-opd/tujuan-opd') && 'text-white bg-graydark py-1'}`}
                             >
                               Tujuan OPD
                             </Link>
@@ -633,15 +623,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               Rencana Kinerja OPD
                             </Link>
                           </li>
-                          {/* <li>
-                            <Link
-                              href="/rencana-opd/info-opd"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white
-                              ${pathname === '/rencana-opd/info-opd' && 'text-white bg-graydark py-1'}`}
-                            >
-                              Info OPD
-                            </Link>
-                          </li> */}
                           <li>
                             <Link
                               href="/rencana-opd/program-kegiatan"
@@ -649,14 +630,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               ${pathname === '/rencana-opd/program-kegiatann' && 'text-white bg-graydark py-1'}`}
                             >
                               Program / Kegiatan
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              href="/notulen/form"
-                              className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white`}
-                            >
-                              Daftar ASN
                             </Link>
                           </li>
                           <li>

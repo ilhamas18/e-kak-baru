@@ -7,23 +7,22 @@ import { AiFillDelete } from 'react-icons/ai';
 import { BiSolidAddToQueue } from 'react-icons/bi';
 import { DummyData } from '../dummy';
 import AddPohonForm from '../add';
-import TacticalTematikProps from './tacticalTematik';
-import SubSubTematikProps from './subSubTematik';
+import StrategicTematikProps from './strategicTematik';
 
 interface PropTypes {
-  subTematik: any;
-  key: number;
-  showAll: boolean;
-  trigger: boolean;
+  subTematik?: any;
+  key?: number;
+  showAll?: boolean;
+  trigger?: boolean;
   getPokinOPD: any;
 }
 
-const SubTematikProps = ({ subTematik, showAll, trigger, key, getPokinOPD }: PropTypes) => {
+const SubSubTematikProps = ({ subTematik, showAll, trigger, key, getPokinOPD }: PropTypes) => {
   const ref = useRef<HTMLDivElement>(null);
   const [idStrategic, setIdStrategic] = useState<number>(0);
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const [openEdit, setOpenEdit] = useState<boolean>(false);
-  const [showSubSubTematik, setShowSubSubTematik] = useState<boolean>(showAll || false);
+  const [showStrategic, setShowStrategic] = useState<boolean>(showAll || false);
   const [openAddTactical, setOpenAddTactical] = useState<boolean>(false);
 
   const handleOpenAddForm = (id: number) => {
@@ -43,16 +42,17 @@ const SubTematikProps = ({ subTematik, showAll, trigger, key, getPokinOPD }: Pro
       <div className='tree-child bg-white w-[30em] flex flex-col gap-4 border' key={key}>
         <div className={`${!openEdit ? 'show' : 'hidden'}`}>
           <div className='border w-full'>
-            <div className='font-medium text-medium'>SUB TEMATIK</div>
+            <div className='font-medium text-medium'>SUB SUB TEMATIK</div>
           </div>
           <table className='flex flex-col border bg-white mt-4'>
             <tbody>
               <tr className='flex items-center border p-2'>
-                <td className='w-[30%] text-left'>SUB TEMATIK</td>
+                <td className='w-[30%] text-left'>SUB SUB TEMATIK</td>
                 <td className='w-[5%]'>:</td>
-                <td className='w-[65%] text-left'>{subTematik.sub_tematik}</td>
+                {/* <td className='w-[65%] text-left'>{subTematik.sub_tematik}</td> */}
+                <td className='w-[65%] text-left'>Contoh sub sub tematik</td>
               </tr>
-              {subTematik.indikator?.map((el2: any, i2: number) => (
+              {/* {subTematik.indikator?.map((el2: any, i2: number) => (
                 <>
                   <tr className='flex items-center border p-2' key={i2}>
                     <td className='w-[30%] text-left text-title-ss2'>INDIKATOR {i2 + 1}</td>
@@ -65,11 +65,12 @@ const SubTematikProps = ({ subTematik, showAll, trigger, key, getPokinOPD }: Pro
                     <td className='w-[65%] text-left'>{el2.target} {el2.satuan}</td>
                   </tr>
                 </>
-              ))}
+              ))} */}
               <tr className='flex items-center border p-2'>
                 <td className='w-[30%] text-left text-title-ss2'>KETERANGAN</td>
                 <td className='w-[5%]'>:</td>
-                <td className='w-[65%] text-left'>{subTematik.keterangan}</td>
+                {/* <td className='w-[65%] text-left'>{subTematik.keterangan}</td> */}
+                <td className='w-[65%] text-left'>Contoh keterangan</td>
               </tr>
             </tbody>
           </table>
@@ -94,13 +95,13 @@ const SubTematikProps = ({ subTematik, showAll, trigger, key, getPokinOPD }: Pro
                 </button>
               </div>
             </div>
-            {!showSubSubTematik ? (
-              <button className='px-4 py-1 rounded rounded-md border w-full hover:bg-xl-base duration-500' onClick={() => setShowSubSubTematik(true)}>
+            {!showStrategic ? (
+              <button className='px-4 py-1 rounded rounded-md border w-full hover:bg-xl-base duration-500' onClick={() => setShowStrategic(true)}>
                 Show
               </button>
             ) : (
               <div className='flex gap-2'>
-                <button className='px-4 py-1 rounded rounded-md border w-full hover:bg-xl-base duration-500' onClick={() => setShowSubSubTematik(false)}>
+                <button className='px-4 py-1 rounded rounded-md border w-full hover:bg-xl-base duration-500' onClick={() => setShowStrategic(false)}>
                   Hidden
                 </button>
                 <button
@@ -118,9 +119,9 @@ const SubTematikProps = ({ subTematik, showAll, trigger, key, getPokinOPD }: Pro
           {/* <EditPohonForm type="strategic" data={strategic} setOpenEdit={setOpenEdit} /> */}
         </div>
       </div>
-      {showSubSubTematik && (
+      {showStrategic && (
         <ul>
-          <SubSubTematikProps
+          <StrategicTematikProps
             // data={data}
             // tactical={el}
             // key={index}
@@ -128,22 +129,22 @@ const SubTematikProps = ({ subTematik, showAll, trigger, key, getPokinOPD }: Pro
             getPokinOPD={getPokinOPD}
           />
           {/* {openAddTactical && (
-            <li>
-              <div id={'addForm'}>
-                <AddPohonForm
-                  formType='Tactical'
-                  setOpenAddTactical={setOpenAddTactical}
-                  idStrategic={idStrategic}
-                  getPokinOPD={getPokinOPD}
-                />
-              </div>
-            </li>
-          )} */}
+    <li>
+      <div id={'addForm'}>
+        <AddPohonForm
+          formType='Tactical'
+          setOpenAddTactical={setOpenAddTactical}
+          idStrategic={idStrategic}
+          getPokinOPD={getPokinOPD}
+        />
+      </div>
+    </li>
+  )} */}
         </ul>
       )}
     </li>
   )
 }
 
-export default SubTematikProps
+export default SubSubTematikProps
 

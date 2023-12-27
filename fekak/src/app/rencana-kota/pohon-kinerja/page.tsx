@@ -11,10 +11,7 @@ import { State } from '@/store/reducer';
 import { PiTreeStructure } from "react-icons/pi";
 import { BiSolidAddToQueue } from 'react-icons/bi';
 import withAuth from '@/components/utils/withAuth';
-import DataMusrenbang from '@/components/pages/master/master-usulan/musrenbang/list';
-import { BiSearch } from 'react-icons/bi';
 import Loading from '@/components/global/Loading/loading';
-// import DataPohonKinerjaKota from '@/components/pages/rencana-kota/pohon-kinerja/list';
 import TextInput from '@/components/common/text-input/input';
 
 const DataPohonKinerjaKota = dynamic(() => import('@/components/pages/rencana-kota/pohon-kinerja/list'), {
@@ -42,7 +39,7 @@ const PohonKinerjaKota = () => {
   const getTematik = async () => {
     setLoading(true);
     const response = await fetchApi({
-      url: `/tematik/getAllTematik`,
+      url: `/tematik/getAllTematik/${storeYear.value}`,
       method: 'get',
       type: 'auth'
     })

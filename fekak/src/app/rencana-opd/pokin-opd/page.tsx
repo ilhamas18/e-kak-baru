@@ -61,6 +61,8 @@ const PokinOPD = () => {
     background: 'linear-gradient(to right, #00bcd4, #2196f3)',
   };
 
+  console.log(dataPokinOPD);
+
 
   return (
     <div className='pokin-opd-container'>

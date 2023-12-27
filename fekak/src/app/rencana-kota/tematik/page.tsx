@@ -26,6 +26,10 @@ const TematikKota: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
+  const { storeYear } = useSelector((state: State) => ({
+    storeYear: state.filter.storeYear
+  }), shallowEqual);
+
   useEffect(() => {
     getTematik();
   }, []);
@@ -33,7 +37,7 @@ const TematikKota: React.FC = () => {
   const getTematik = async () => {
     setLoading(true);
     const response = await fetchApi({
-      url: '/tematik/getAllTematik',
+      url: `/tematik/getAllTematik/${storeYear.value}`,
       method: 'get',
       type: 'auth'
     })

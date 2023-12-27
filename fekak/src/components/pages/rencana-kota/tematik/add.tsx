@@ -10,6 +10,8 @@ import * as Yup from 'yup';
 import { fetchApi } from "@/pages/api/request";
 import { IoIosAddCircle } from "react-icons/io";
 import XAddIndikatorTematik from "./x-modal/XAddIndikator";
+import { shallowEqual, useSelector } from "react-redux";
+import { State } from "@/store/reducer";
 
 interface FormValues {
   tematik: string;
@@ -285,12 +287,17 @@ const AddTematikForm: any = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
 
+  const { storeYear } = useSelector((state: State) => ({
+    storeYear: state.filter.storeYear
+  }), shallowEqual);
+
   const handleSubmit = async (values: FormValues) => {
     setLoading(true);
     const payload = {
       tematik: values.tematik,
       indikator: values.indikator,
-      keterangan: values.keterangan
+      keterangan: values.keterangan,
+      tahun: storeYear.value
     }
 
     const response = await fetchApi({
